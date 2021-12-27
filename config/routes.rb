@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   # Authentication path
-  get "/roles", to: "auth#index"
   post "/login", to: "auth#login"
   post "/register", to: "auth#create"
   get "/logout", to: "auth#logout"
