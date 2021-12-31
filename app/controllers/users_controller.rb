@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorized
+  # before_action :authorized
 
   # Crea un usuario en la base de datos
   def create

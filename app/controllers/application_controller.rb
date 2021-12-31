@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
   # Crea una encriptación para el payload de entrada
   def encode_token(payload)
-    JWT.encode(payload, 'simpleStringToEncodeOrDecodeAPayload', { expiresIn: '1h' })
+    JWT.encode(payload, 'simpleStringToEncodeOrDecodeAPayload')
   end
 
   # Verifica que el header haya sido enviado desde la aplicación de frontend
