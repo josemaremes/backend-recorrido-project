@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2021_12_27_214041) do
     t.integer "service_id", null: false
     t.integer "opening_schedule_id", null: false
     t.integer "closing_schedule_id", null: false
-    t.string "name", null: false
+    t.string "contract_name", null: false
     t.integer "opening_day_id", null: false
     t.integer "closing_day_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -29,13 +29,13 @@ ActiveRecord::Schema.define(version: 2021_12_27_214041) do
   end
 
   create_table "days", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "day_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "role_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2021_12_27_214041) do
   end
 
   create_table "services", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "service_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

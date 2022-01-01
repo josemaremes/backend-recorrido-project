@@ -4,7 +4,7 @@ class CreateContracts < ActiveRecord::Migration[6.1]
       t.references :service, null: false, foreign_key: true
       t.references :opening_schedule, null: false
       t.references :closing_schedule, null: false
-      t.string :name, null: false
+      t.string :contract_name, null: false
       t.references :opening_day, null: false
       t.references :closing_day, null: false
 

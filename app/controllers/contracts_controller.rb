@@ -3,7 +3,7 @@ class ContractsController < ApplicationController
 
   # Devuelve el listado de todos los contratos
   def index
-    @contracts = Contract.all
+    @contracts = Contract.joins(:service, :schedule, :day)
     render json: { contracts: @contracts }, status: 200
   end
 end
