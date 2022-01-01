@@ -10,10 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_26_223142) do
+ActiveRecord::Schema.define(version: 2021_12_27_214041) do
+
+  create_table "contracts", force: :cascade do |t|
+    t.integer "service_id", null: false
+    t.integer "opening_schedule_id", null: false
+    t.integer "closing_schedule_id", null: false
+    t.string "contract_name", null: false
+    t.integer "opening_day_id", null: false
+    t.integer "closing_day_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["closing_day_id"], name: "index_contracts_on_closing_day_id"
+    t.index ["closing_schedule_id"], name: "index_contracts_on_closing_schedule_id"
+    t.index ["opening_day_id"], name: "index_contracts_on_opening_day_id"
+    t.index ["opening_schedule_id"], name: "index_contracts_on_opening_schedule_id"
+    t.index ["service_id"], name: "index_contracts_on_service_id"
+  end
+
+  create_table "days", force: :cascade do |t|
+    t.string "day_name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "roles", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "role_name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.string "opening_time", null: false
+    t.string "closing_time", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "service_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -29,5 +64,10 @@ ActiveRecord::Schema.define(version: 2021_12_26_223142) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "contracts", "days", column: "closing_day_id"
+  add_foreign_key "contracts", "days", column: "opening_day_id"
+  add_foreign_key "contracts", "schedules", column: "closing_schedule_id"
+  add_foreign_key "contracts", "schedules", column: "opening_schedule_id"
+  add_foreign_key "contracts", "services"
   add_foreign_key "users", "roles"
 end

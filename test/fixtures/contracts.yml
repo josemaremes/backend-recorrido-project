@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  service: one
+  opening_schedule: one
+  closing_schedule: one
+  name: MyString
+  opening_day: one
+  closing_day: one
+
+two:
+  service: two
+  opening_schedule: two
+  closing_schedule: two
+  name: MyString
+  opening_day: two
+  closing_day: two

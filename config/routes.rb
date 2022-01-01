@@ -1,17 +1,20 @@
 Rails.application.routes.draw do
-  # Root path
+  # Ruta home
   root to: "home#index"
 
-  # Authentication path
-  get "/roles", to: "auth#index"
+  # Rutas de autenticación
   post "/login", to: "auth#login"
   post "/register", to: "auth#create"
   get "/logout", to: "auth#logout"
 
-  # Users path
+  # Rutas de usuarios
   get "/users", to: "users#index"
   get "/users/:id", to: "users#show"
   post "/users", to: "users#create"
   delete "/users/:id", to: "users#destroy"
 
+  # Rutas para obtener listados de contratos, roles y servicios
+  resources :contracts, only: [:index]
+  resources :roles, only: [:index]
+  resources :services, only: [:index]
 end

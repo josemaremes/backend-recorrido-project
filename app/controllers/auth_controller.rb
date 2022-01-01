@@ -26,14 +26,8 @@ class AuthController < ApplicationController
   # Cierra la sesión de un usuario
   def logout
     @user = nil
-    render json: { user: @user }
+    render json: { user: @user, token: nil }
   end
-
-  def index
-    @users = User.all
-    render json: { users: @users }, status: 200
-  end
-
 
   private
 

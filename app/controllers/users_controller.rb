@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorized
+  # before_action :authorized
 
   # Crea un usuario en la base de datos
   def create
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   # Devuelve el listado de todos los usuarios
   def index
-    @users = User.all
+    @users = User.joins(:role).select(:id, :name, :lastname, :email, :role_id, :role_name)
     render json: { users: @users }, status: 200
   end
 
