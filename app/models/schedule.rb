@@ -1,3 +1,3 @@
 class Schedule < ApplicationRecord
-  has_many :contract
+  validates :time_name, presence: true
 end

@@ -7,82 +7,103 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Drop models
-Contract.delete_all
-User.delete_all
-Day.delete_all
-Role.delete_all
-Service.delete_all
-Schedule.delete_all
+# Contract.delete_all
+# User.delete_all
+# Day.delete_all
+# Role.delete_all
+# Service.delete_all
+# Schedule.delete_all
 
-# Add Days
-days = Day.create([
-  {day_name: "Lunes"},
-  {day_name: "Martes"},
-  {day_name: "Miércoles"},
-  {day_name: "Jueves"},
-  {day_name: "Viernes"},
-  {day_name: "Sábado"},
-  {day_name: "Domingo"}
-])
+# # Add Days
+# days = Day.create([
+#   {day_name: "Lunes"},
+#   {day_name: "Martes"},
+#   {day_name: "Miércoles"},
+#   {day_name: "Jueves"},
+#   {day_name: "Viernes"},
+#   {day_name: "Sábado"},
+#   {day_name: "Domingo"}
+# ])
 
-# Add Roles
-roles = Role.create([
-  {role_name: "Administrador"},
-  {role_name: "Ingeniero"},
-  {role_name: "Supervisor"}
-])
+# # Add Roles
+# roles = Role.create([
+#   {role_name: "Administrador"},
+#   {role_name: "Ingeniero"},
+#   {role_name: "Supervisor"}
+# ])
 
-# Add services
-services = Service.create([
-  {service_name: "Monitoreo de EC2"},
-  {service_name: "Revisión de Buckets S3"},
-  {service_name: "Despliegues en Amplify" }
-])
+# # Add services
+# services = Service.create([
+#   {service_name: "Monitoreo de EC2"},
+#   {service_name: "Revisión de Buckets S3"},
+#   {service_name: "Despliegues en Amplify" }
+# ])
 
-# Add Schedules
-schedules = Schedule.create([
-  {opening_time: "00:00", closing_time: "01:00"},
-  {opening_time: "01:00", closing_time: "02:00"},
-  {opening_time: "02:00", closing_time: "03:00"},
-  {opening_time: "03:00", closing_time: "04:00"},
-  {opening_time: "04:00", closing_time: "05:00"},
-  {opening_time: "05:00", closing_time: "06:00"},
-  {opening_time: "06:00", closing_time: "07:00"},
-  {opening_time: "07:00", closing_time: "08:00"},
-  {opening_time: "08:00", closing_time: "09:00"},
-  {opening_time: "09:00", closing_time: "10:00"},
-  {opening_time: "10:00", closing_time: "11:00"},
-  {opening_time: "11:00", closing_time: "12:00"},
-  {opening_time: "12:00", closing_time: "13:00"},
-  {opening_time: "13:00", closing_time: "14:00"},
-  {opening_time: "14:00", closing_time: "15:00"},
-  {opening_time: "15:00", closing_time: "16:00"},
-  {opening_time: "16:00", closing_time: "17:00"},
-  {opening_time: "17:00", closing_time: "18:00"},
-  {opening_time: "18:00", closing_time: "19:00"},
-  {opening_time: "19:00", closing_time: "20:00"},
-  {opening_time: "20:00", closing_time: "21:00"},
-  {opening_time: "21:00", closing_time: "22:00"},
-  {opening_time: "22:00", closing_time: "23:00"},
-  {opening_time: "23:00", closing_time: "00:00"},
-])
+# # Add Schedules
+# schedules = Schedule.create([
+#   {time_name: "00:00"},
+#   {time_name: "01:00"},
+#   {time_name: "02:00"},
+#   {time_name: "03:00"},
+#   {time_name: "04:00"},
+#   {time_name: "05:00"},
+#   {time_name: "06:00"},
+#   {time_name: "07:00"},
+#   {time_name: "08:00"},
+#   {time_name: "09:00"},
+#   {time_name: "10:00"},
+#   {time_name: "11:00"},
+#   {time_name: "12:00"},
+#   {time_name: "13:00"},
+#   {time_name: "14:00"},
+#   {time_name: "15:00"},
+#   {time_name: "16:00"},
+#   {time_name: "17:00"},
+#   {time_name: "18:00"},
+#   {time_name: "19:00"},
+#   {time_name: "20:00"},
+#   {time_name: "21:00"},
+#   {time_name: "22:00"},
+#   {time_name: "23:00"},
+# ])
 
-# Add Contracts
-contracts = Contract.create([
+# Add Userss¿
+users = User.create([
   {
-    contract_name: "Empresa Recorrido.cl",
-    service_id: services[0].id,
-    opening_schedule_id: schedules[17].id,
-    closing_schedule_id: schedules[23].id,
-    opening_day_id: days[0].id,
-    closing_day_id: days[4].id
+    name: "Bárbara",
+    lastname: "Castro",
+    password: "123456",
+    email: "correo1@gmail.com",
+    role_id: (Role.find_by role_name: "Administrador").id
   },
   {
-    contract_name: "Empresa Recorrido.cl",
-    service_id: services[0].id,
-    opening_schedule_id: schedules[10].id,
-    closing_schedule_id: schedules[23].id,
-    opening_day_id: days[5].id,
-    closing_day_id: days[6].id
+    name: "Ernesto",
+    lastname: "Reyes",
+    password: "123456",
+    email: "correo2@gmail.com",
+    role_id: (Role.find_by role_name: "Ingeniero").id
   },
+  {
+    name: "Benjamín",
+    lastname: "Castillo",
+    password: "123456",
+    email: "correo3@gmail.com",
+    role_id: (Role.find_by role_name: "Supervisor").id
+  }
 ])
+
+# # Add Contracts
+# contracts = Contract.create([
+#   {
+#     contract_name: "Empresa Recorrido.cl",
+#     service_id: services[0].id,
+#     open_close_day: days[0].day_name + '-' + days[4].day_name,
+#     open_close_schedule: schedules[19].time_name + '-' + schedules[23].time_name
+#   },
+#   {
+#     contract_name: "Empresa Recorrido.cl",
+#     service_id: services[0].id,
+#     open_close_day: days[5].day_name + '-' + days[6].day_name,
+#     open_close_schedule: schedules[10].time_name + '-' + schedules[23].time_name
+#   },
+# ])
