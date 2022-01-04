@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :authorized
+  before_action :authorized
 
   # Devuelve el listado de todos los usuarios
   def index

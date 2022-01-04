@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  # before_action :authorized
+  before_action :authorized
 
   # Crea un contrato en la base de datos
   def create
