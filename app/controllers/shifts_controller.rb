@@ -1,5 +1,5 @@
 class ShiftsController < ApplicationController
-  # before_action :authorized
+  before_action :authorized
 
   # Crea la información de los turnos en la BD
   def create
@@ -22,6 +22,8 @@ class ShiftsController < ApplicationController
         third_user_name: shift["thirdUserName"],
         week: shift["week"]
       }
+
+      puts new_shift
 
       # Determinar si existe un turno seleccionado
       if !shift["firstUserValue"] and !shift["secondUserValue"] and !shift["thirdUserValue"]
@@ -78,23 +80,22 @@ class ShiftsController < ApplicationController
     # Insertar nuevamente
     @shifts = Shift.create(shifts_array)
 
-    if @shifts.valid?
-      render json: { shifts: @shifts }
-    else
-      render json: { error: "There was a problem when trying to create the shifts in the DB" }
-    end
+    # Renderizar
+    render json: { shifts: @shifts }
   end
 
   # Devuelve el listado de todos los turnos
   def index
-    puts shift_params
-    @shifts = Shift.all
+    contract_name = shift_params[:contract_name]
+    service_name = shift_params[:service_name]
+    week = shift_params[:week]
+    @shifts = Shift.where(:contract_name => contract_name, :service_name => service_name, :week => week) .all
     render json: { shifts: @shifts }, status: 200
   end
 
   private
 
   def shift_params
-    params.permit(:data, :shift)
+    params.permit(:data, :contract_name, :service_name, :week)
   end
 end

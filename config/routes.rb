@@ -15,5 +15,7 @@ Rails.application.routes.draw do
   resources :services, only: [:index, :create, :destroy]
   resources :schedules, only: [:index]
   resources :users, only: [:index, :destroy]
-  resources :shifts, only: [:create, :index]
+
+  post "/shifts/filtered", to: "shifts#index"
+  post "/shifts", to: "shifts#create"
 end
