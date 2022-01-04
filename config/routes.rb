@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   resources :services, only: [:index, :create, :destroy]
   resources :schedules, only: [:index]
   resources :users, only: [:index, :destroy]
-  resources :shifts, only: [:index, :destroy]
+  resources :shifts, only: [:create, :index]
 end
