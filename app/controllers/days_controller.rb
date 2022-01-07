@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DaysController < ApplicationController
   before_action :authorized
 

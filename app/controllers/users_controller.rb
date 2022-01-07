@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :authorized
 
@@ -11,7 +13,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find_by(id: user_params[:id])
     @user.delete
-    render json: { msg: "The user was deleted" }, status: 200
+    render json: { msg: 'The user was deleted' }, status: 200
   end
 
   private
