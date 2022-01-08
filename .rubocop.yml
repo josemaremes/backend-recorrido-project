@@ -2,6 +2,7 @@ AllCops:
   Exclude:
     - 'bin/**/*'
     - 'db/**/*'
+    - 'spec/**/*'
 
 Layout/LineLength:
   Max: 99
