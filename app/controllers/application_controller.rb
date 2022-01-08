@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Controllador principal que se encarga de validar el token de acceso y que funge
+# como base de los demás controladores
 class ApplicationController < ActionController::API
   # Crea una encriptación para el payload de entrada
 
@@ -18,16 +20,14 @@ class ApplicationController < ActionController::API
   # se genera un error
 
   def decoded_token
-    if auth_header
+    return if auth_header
 
-      token = auth_header.split(' ')[1]
+    token = auth_header.split(' ')[1]
 
-      begin
-        JWT.decode(token, 'simpleStringToEncodeOrDecodeAPayload', true, algorithm: 'HS256')
-      rescue JWT::DecodeError
-        nil
-      end
-
+    begin
+      JWT.decode(token, 'simpleStringToEncodeOrDecodeAPayload', true, algorithm: 'HS256')
+    rescue JWT::DecodeError
+      nil
     end
   end
 
@@ -36,13 +36,11 @@ class ApplicationController < ActionController::API
   # global @user
 
   def logged_in_user
-    if decoded_token
+    return if decoded_token
 
-      user_id = decoded_token[0]['user_id']
+    user_id = decoded_token[0]['user_id']
 
-      @user = User.find_by(id: user_id)
-
-    end
+    @user = User.find_by(id: user_id)
   end
 
   # Verifica la información del usuario registrado
@@ -54,12 +52,10 @@ class ApplicationController < ActionController::API
   # Valida que el usuario esté autenticado
 
   def authorized
-    unless logged_in?
+    return unless  logged_in?
 
-      render json: { msg: 'You must login in the app. Please use the frontend app.' },
+    render json: { msg: 'You must login in the app. Please use the frontend app.' },
 
-             status: :unauthorized
-
-    end
+           status: :unauthorized
   end
 end

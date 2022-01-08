@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Clase que contiene los métodos relacionados a la autenticación del usuario
 class AuthController < ApplicationController
   # Permite crear un usuario desde la vista de registro
   def create

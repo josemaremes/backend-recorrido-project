@@ -51,10 +51,22 @@ gem 'rack-cors'
 gem 'jwt_sessions', '~> 2.6'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'capybara', '>= 2.15', '< 4.0'
+  gem 'chromedriver-helper'
+  gem 'database_cleaner'
+  gem 'factory_bot_rails'
+  gem 'ffaker'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
+  gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
+  gem 'simplecov', require: false
 
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
+
+#  
 
 group :development do
 end

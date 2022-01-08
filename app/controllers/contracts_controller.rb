@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Clase que contiene los métodos relacionados al modelo Contracts
 class ContractsController < ApplicationController
   before_action :authorized
 
