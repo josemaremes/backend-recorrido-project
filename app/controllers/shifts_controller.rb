@@ -6,11 +6,10 @@ class ShiftsController < ApplicationController
 
   # Crea la información de los turnos en la BD
   def create
-    #   # Definir arreglo que será almacenado en la BD
-    #   shifts_array = []
+    # Obtener arreglo de entrada
+    params = JSON.parse(shift_params[:data])
 
-    #   # Obtener arreglo de entrada
-    #   params = JSON.parse(shift_params[:data])
+    puts params
 
     #   # Construir la información que se va a guardar en la BD con el formato correcto
     #   params.each do |shift|

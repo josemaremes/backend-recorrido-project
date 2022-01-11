@@ -11,12 +11,12 @@ Rails.application.routes.draw do
 
   # Rutas por defectos para los contratos, los usuarios, los servicios
   # los días, los roles, los horarios, y los turnos
-  resources :contracts, only: %i[index create destroy]
+  resources :contracts, only: %i[create destroy index]
   resources :days, only: [:index]
   resources :roles, only: [:index]
-  resources :services, only: %i[index create destroy]
+  resources :services, only: %i[create destroy index]
   resources :schedules, only: [:index]
-  resources :users, only: %i[index destroy]
+  resources :users, only: %i[create destroy index]
 
   post '/shifts/filtered', to: 'shifts#index'
   post '/shifts', to: 'shifts#create'

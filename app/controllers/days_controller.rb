@@ -2,7 +2,7 @@
 
 # Clase que contiene los métodos relacionados al modelo Days
 class DaysController < ApplicationController
-  before_action :authorized
+  # before_action :authorized
 
   # Devuelve el listado de todos los días
   def index

@@ -20,7 +20,7 @@ class ApplicationController < ActionController::API
   # se genera un error
 
   def decoded_token
-    return if auth_header
+    return unless auth_header
 
     token = auth_header.split(' ')[1]
 
@@ -36,7 +36,7 @@ class ApplicationController < ActionController::API
   # global @user
 
   def logged_in_user
-    return if decoded_token
+    return unless decoded_token
 
     user_id = decoded_token[0]['user_id']
 
@@ -52,10 +52,9 @@ class ApplicationController < ActionController::API
   # Valida que el usuario esté autenticado
 
   def authorized
-    return unless  logged_in?
+    return if logged_in?
 
     render json: { msg: 'You must login in the app. Please use the frontend app.' },
-
            status: :unauthorized
   end
 end

@@ -51,7 +51,9 @@ gem 'rack-cors'
 gem 'jwt_sessions', '~> 2.6'
 
 group :development, :test do
+  gem 'capybara'
   gem 'ffi'
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'shoulda-matchers', '~> 5.0'
 
