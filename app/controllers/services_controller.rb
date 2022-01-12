@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Clase que contiene los métodos relacionados al modelo Services
 class ServicesController < ApplicationController
   before_action :authorized
 
@@ -7,7 +10,7 @@ class ServicesController < ApplicationController
     if @service.valid?
       render json: { service: @service }
     else
-      render json: { error: "There was a problem when trying to create the service in the DB" }
+      render json: { error: 'There was a problem when trying to create the service in the DB' }
     end
   end
 
@@ -15,7 +18,7 @@ class ServicesController < ApplicationController
   def destroy
     @service = Service.find_by(id: service_params[:id])
     @service.delete
-    render json: { msg: "The service was deleted" }, status: 200
+    render json: { msg: 'The service was deleted' }, status: 200
   end
 
   # Devuelve el listado de todos los servicios

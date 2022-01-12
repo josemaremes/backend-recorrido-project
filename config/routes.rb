@@ -1,21 +1,23 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   # Ruta home
-  root to: "home#index"
+  root to: 'home#index'
 
   # Rutas de autenticación
-  post "/login", to: "auth#login"
-  post "/register", to: "auth#create"
-  get "/logout", to: "auth#logout"
+  post '/login', to: 'auth#login'
+  post '/register', to: 'auth#create'
+  get '/logout', to: 'auth#logout'
 
   # Rutas por defectos para los contratos, los usuarios, los servicios
   # los días, los roles, los horarios, y los turnos
-  resources :contracts, only: [:index, :create, :destroy]
+  resources :contracts, only: %i[create destroy index]
   resources :days, only: [:index]
   resources :roles, only: [:index]
-  resources :services, only: [:index, :create, :destroy]
+  resources :services, only: %i[create destroy index]
   resources :schedules, only: [:index]
-  resources :users, only: [:index, :destroy]
+  resources :users, only: %i[create destroy index]
 
-  post "/shifts/filtered", to: "shifts#index"
-  post "/shifts", to: "shifts#create"
+  post '/shifts/filtered', to: 'shifts#index'
+  post '/shifts', to: 'shifts#create'
 end

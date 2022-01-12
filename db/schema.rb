@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_03_015644) do
+ActiveRecord::Schema.define(version: 2022_01_09_204351) do
+
+  create_table "balances", force: :cascade do |t|
+    t.string "contract_name", null: false
+    t.string "service_name", null: false
+    t.string "user_name", null: false
+    t.integer "count", null: false
+    t.integer "shift", default: 3, null: false
+    t.string "week", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "contracts", force: :cascade do |t|
     t.integer "service_id", null: false
@@ -51,14 +62,8 @@ ActiveRecord::Schema.define(version: 2022_01_03_015644) do
     t.string "service_name", null: false
     t.string "date_title", null: false
     t.string "interval", null: false
-    t.string "not_name", null: false
-    t.boolean "not_value", null: false
-    t.string "first_user_name", null: false
-    t.boolean "first_user_value", null: false
-    t.string "second_user_name", null: false
-    t.boolean "second_user_value", null: false
-    t.string "third_user_name", null: false
-    t.boolean "third_user_value", null: false
+    t.string "user_name", null: false
+    t.boolean "user_value", null: false
     t.string "week", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Clase que contiene los métodos relacionados al modelo Schedules
 class SchedulesController < ApplicationController
   # before_action :authorized
 

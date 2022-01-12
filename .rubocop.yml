@@ -1,0 +1,15 @@
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'spec/**/*'
+
+Layout/LineLength:
+  Max: 99
+
+Layout/EndOfLine:
+  Enabled: false
+
+Style/Encoding:
+  Enabled: false
+
